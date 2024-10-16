@@ -1,38 +1,10 @@
-import { useEffect, useState } from "react";
 import Book from "./Book";
 import SkeletonLoader from "./SkeletonLoader";
 
-const BooksCollection = () => {
-  const [books, setBooks] = useState([]);
-  const [nextPage, setNextPage] = useState(null);
-  const [prevPage, setPrevPage] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-  const fetchBooks = async (url = "https://gutendex.com/books") => {
-    setLoading(true);
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      setBooks(data.results);
-      setNextPage(data.next);
-      setPrevPage(data.previous);
-    } catch (error) {
-      console.error("Error fetching books:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchBooks();
-  }, []);
-
+const BooksCollection = (props) => {
+  const { books, loading, fetchBooks, prevPage, nextPage } = props;
   return (
     <div className="container mx-auto">
-      <h1 className="text-3xl font-bold my-4 text-center text-headingText">
-        Books Collection
-      </h1>
-
       {loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {/* Show skeleton loader for each card while loading */}

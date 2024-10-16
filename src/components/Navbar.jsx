@@ -3,7 +3,7 @@ import logoMobile from "../assets/favicon.svg";
 import heart from "../assets/heart.svg";
 import search from "../assets/search.svg";
 
-const Navbar = () => {
+const Navbar = ({ searchQuery, setSearchQuery, setIsUsingSearch }) => {
   return (
     <header className="bg-[#d6e0d5] w-full">
       <nav
@@ -30,9 +30,13 @@ const Navbar = () => {
               className="peer flex-1 h-full w-full outline-primary outline-1 text-sm bg-inherit text-gray-700 pl-2"
               type="text"
               id="search"
-              placeholder="Search something.."
+              placeholder="Search books..."
+              value={searchQuery}
+              onFocus={() => setIsUsingSearch(true)}
+              onBlur={() => setIsUsingSearch(false)}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <div className="flex-none flex items-center justify-center px-1 md:px-3 lg:px-6 h-full text-gray-300">
+            <div className="flex-none flex items-center space-x-1  px-1 md:px-3 lg:px-4 h-full text-gray-300">
               <img src={search} alt="Search icon" className="h-8" />
               <span className="hidden lg:block text-2xl text-black">
                 Search
