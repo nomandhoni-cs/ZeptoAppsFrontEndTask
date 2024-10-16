@@ -25,14 +25,14 @@ const Navbar = () => {
           </a>
         </div>
         <div className="flex-1">
-          <div className="relative flex items-center divide-x-2 divide-secondary w-full border border-secondary h-12 rounded-lg focus-within:shadow-lg overflow-hidden">
+          <div className="relative flex items-center divide-x-1 sm:divide-x-2 divide-secondary w-full border border-secondary h-12 rounded-lg focus-within:shadow-lg overflow-hidden">
             <input
               className="peer flex-1 h-full w-full outline-primary outline-1 text-sm bg-inherit text-gray-700 pl-2"
               type="text"
               id="search"
               placeholder="Search something.."
             />
-            <div className="flex-none flex items-center justify-center px-4 h-full text-gray-300">
+            <div className="flex-none flex items-center justify-center px-1 md:px-3 lg:px-6 h-full text-gray-300">
               <img src={search} alt="Search icon" className="h-8" />
               <span className="hidden lg:block text-2xl text-black">
                 Search
