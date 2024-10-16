@@ -59,9 +59,9 @@ function App() {
         setSearchQuery={setSearchQuery}
       />
       <BooksCollection
-        books={isUsingSearch ? searchResults : books}
-        loading={loading}
+        books={searchQuery.length > 0 ? searchResults : books}
         fetchBooks={fetchBooks}
+        loading={loading}
         nextPage={nextPage}
         prevPage={prevPage}
       />

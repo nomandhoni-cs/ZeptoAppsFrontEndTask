@@ -1,11 +1,31 @@
+import heart from "../assets/heart.svg"; // Import the heart icon
+
 const Book = ({ book }) => {
   return (
-    <div className="max-w-sm mx-auto bg-white dark:bg-dark-tertiary shadow-md rounded overflow-hidden rounded-t-2xl">
-      <img
-        className="h-56 w-full object-cover"
-        src={book.formats["image/jpeg"]}
-        alt={`Cover of ${book.title}`}
-      />
+    <div className="relative w-full mx-auto bg-white dark:bg-dark-tertiary shadow-md rounded overflow-hidden rounded-t-2xl">
+      <div className="relative">
+        {/* Container with a fixed aspect ratio for consistent height */}
+        <div className="w-full h-56 bg-gray-200 flex items-center justify-center">
+          <img
+            className="w-full h-full object-cover"
+            src={book.formats["image/jpeg"]}
+            alt={`Cover of ${book.title}`}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "path/to/placeholder-image.jpg"; // Add a placeholder in case of missing images
+            }}
+          />
+        </div>
+
+        {/* Heart button for favorites */}
+        <button
+          className="absolute top-2 right-2 bg-white p-2 rounded-full shadow hover:scale-105 transition-transform duration-300"
+          aria-label="Add to favorites"
+        >
+          <img src={heart} alt="Add to favorites" className="h-6 w-6" />
+        </button>
+      </div>
+
       <div className="px-3 py-3">
         <div className="text-left font-bold font-poppins text-xl mb-2 text-black">
           {book.title}

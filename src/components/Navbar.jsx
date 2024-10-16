@@ -36,7 +36,7 @@ const Navbar = ({ searchQuery, setSearchQuery, setIsUsingSearch }) => {
               onBlur={() => setIsUsingSearch(false)}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <div className="flex-none flex items-center space-x-1  px-1 md:px-3 lg:px-4 h-full text-gray-300">
+            <div className="flex-none flex items-center space-x-1  px-1 md:px-3 lg:px-4 h-full text-gray-300 cursor-pointer">
               <img src={search} alt="Search icon" className="h-8" />
               <span className="hidden lg:block text-2xl text-black">
                 Search
