@@ -28,8 +28,10 @@ const BooksCollection = () => {
   }, []);
 
   return (
-    <div className="container mx-auto px-4">
-      <h1 className="text-3xl font-bold my-4 text-center">Books Collection</h1>
+    <div className="container mx-auto">
+      <h1 className="text-3xl font-bold my-4 text-center text-headingText">
+        Books Collection
+      </h1>
 
       {loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -50,7 +52,7 @@ const BooksCollection = () => {
         <button
           onClick={() => prevPage && fetchBooks(prevPage)}
           disabled={!prevPage}
-          className={`px-4 py-2 rounded bg-blue-500 text-white ${
+          className={`px-4 py-2 rounded text-white ${
             !prevPage && "opacity-50 cursor-not-allowed"
           }`}
         >
@@ -59,7 +61,7 @@ const BooksCollection = () => {
         <button
           onClick={() => nextPage && fetchBooks(nextPage)}
           disabled={!nextPage}
-          className={`px-4 py-2 rounded bg-blue-500 text-white ${
+          className={`px-4 py-2 rounded bg-[#DD845A] text-white ${
             !nextPage && "opacity-50 cursor-not-allowed"
           }`}
         >
