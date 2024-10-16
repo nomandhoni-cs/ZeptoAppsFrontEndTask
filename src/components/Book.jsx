@@ -9,7 +9,7 @@ const Book = ({ book }) => {
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{book.title}</div>
         <p className="text-gray-700 text-base">
-          Author: {book.authors.map((author) => author.name).join(", ")}
+          by {book.authors.map((author) => author.name).join(", ")}
         </p>
         <p className="text-gray-600 text-sm mt-2">
           Genre: {book.subjects.join(", ")}
