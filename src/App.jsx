@@ -4,11 +4,10 @@ import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <>
+    <div className="App bg-primary">
       <Navbar />
       <BooksCollection />
-      <div className="card"></div>
-    </>
+    </div>
   );
 }
 
