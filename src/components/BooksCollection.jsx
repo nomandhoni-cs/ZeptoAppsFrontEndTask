@@ -9,7 +9,7 @@ const BooksCollection = ({
   nextPage,
 }) => {
   return (
-    <div className="container mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
+    <div className="container mx-auto px-8 sm:px-4 md:px-6 lg:px-8">
       {loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {/* Show skeleton loader for each card while loading */}
