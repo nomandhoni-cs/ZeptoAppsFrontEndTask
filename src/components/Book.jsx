@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Book = ({ book, setWishListedBooks }) => {
   const [isFavorited, setIsFavorited] = useState(false);
@@ -102,41 +103,43 @@ const Book = ({ book, setWishListedBooks }) => {
         </p>
       </div>
 
-      <div className="px-3 py-3">
-        {/* Book title */}
-        <div className="text-left font-bold font-poppins text-xl mb-2 text-headingText truncate">
-          {book.title}
-        </div>
+      <Link to={`/book/${book.id}`}>
+        <div className="px-3 py-3">
+          {/* Book title */}
+          <div className="text-left font-bold font-poppins text-xl mb-2 text-headingText truncate">
+            {book.title}
+          </div>
 
-        {/* Author information */}
-        <p className="text-left text-gray-700 text-base">
-          by {book.authors.map((author) => author.name).join(", ")}
-        </p>
+          {/* Author information */}
+          <p className="text-left text-gray-700 text-base">
+            by {book.authors.map((author) => author.name).join(", ")}
+          </p>
 
-        {/* Genre display */}
+          {/* Genre display */}
 
-        <div className="flex flex-wrap gap-2 mt-2">
-          <p className="text-left text-gray-700 text-base">Genre:</p>
-          {book.subjects.slice(0, 4).map((subject, index) => {
-            const truncatedSubject = subject.split(" ").slice(0, 2).join(" ");
-            const isTruncated = subject.split(" ").length > 2;
-            return (
-              <span
-                key={index}
-                className="bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded-full"
-              >
-                {isTruncated ? `${truncatedSubject}...` : truncatedSubject}
+          <div className="flex flex-wrap gap-2 mt-2">
+            <p className="text-left text-gray-700 text-base">Genre:</p>
+            {book.subjects.slice(0, 4).map((subject, index) => {
+              const truncatedSubject = subject.split(" ").slice(0, 2).join(" ");
+              const isTruncated = subject.split(" ").length > 2;
+              return (
+                <span
+                  key={index}
+                  className="bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded-full"
+                >
+                  {isTruncated ? `${truncatedSubject}...` : truncatedSubject}
+                </span>
+              );
+            })}
+
+            {book.subjects.length > 4 && (
+              <span className="bg-gray-300 text-gray-600 text-xs px-3 py-1 rounded-full">
+                {`${book.subjects.length - 4}+`}
               </span>
-            );
-          })}
-
-          {book.subjects.length > 4 && (
-            <span className="bg-gray-300 text-gray-600 text-xs px-3 py-1 rounded-full">
-              {`${book.subjects.length - 4}+`}
-            </span>
-          )}
+            )}
+          </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };

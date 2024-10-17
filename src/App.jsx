@@ -4,6 +4,11 @@ import Navbar from "./components/Navbar";
 import { useEffect, useState } from "react";
 import Search from "./components/Search";
 import FilteringAndPagination from "./components/FilteringAndPagination";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import LayoutPage from "./pages/LayoutPage";
+import Homepage from "./pages/Homepage";
+import MyWishList from "./pages/MyWishList";
+import SingleBook from "./components/SingleBook";
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -52,26 +57,65 @@ function App() {
       setSearchResults(books);
     }
   }, [searchQuery]);
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <LayoutPage wishListedBooks={wishListedBooks} />,
+      children: [
+        {
+          index: true,
+          element: (
+            <Homepage
+              isUsingSearch={isUsingSearch}
+              setIsUsingSearch={setIsUsingSearch}
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+              books={searchQuery.length > 0 ? searchResults : books}
+              fetchBooks={fetchBooks}
+              loading={loading}
+              nextPage={nextPage}
+              prevPage={prevPage}
+              setWishListedBooks={setWishListedBooks}
+            />
+          ),
+        },
+        {
+          path: "mywishlist",
+          element: (
+            <MyWishList
+              books={wishListedBooks}
+              setWishListedBooks={setWishListedBooks}
+            />
+          ),
+        },
+        {
+          path: "book/:id",
+          element: <SingleBook />,
+        },
+      ],
+    },
+  ]);
 
   return (
-    <div className="App bg-primary md:px-10 xl:px-30 space-y-7">
-      <Navbar wishListedBooks={wishListedBooks} />
-      <Search
-        isUsingSearch={isUsingSearch}
-        setIsUsingSearch={setIsUsingSearch}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-      />
-      <FilteringAndPagination />
-      <BooksCollection
-        books={searchQuery.length > 0 ? searchResults : books}
-        fetchBooks={fetchBooks}
-        loading={loading}
-        nextPage={nextPage}
-        prevPage={prevPage}
-        setWishListedBooks={setWishListedBooks}
-      />
-    </div>
+    <RouterProvider router={router} />
+    // <div className="App bg-primary md:px-10 xl:px-30 space-y-7">
+    //   <Navbar wishListedBooks={wishListedBooks} />
+    //   <Search
+    //     isUsingSearch={isUsingSearch}
+    //     setIsUsingSearch={setIsUsingSearch}
+    //     searchQuery={searchQuery}
+    //     setSearchQuery={setSearchQuery}
+    //   />
+    //   <FilteringAndPagination />
+    //   <BooksCollection
+    //     books={searchQuery.length > 0 ? searchResults : books}
+    //     fetchBooks={fetchBooks}
+    //     loading={loading}
+    //     nextPage={nextPage}
+    //     prevPage={prevPage}
+    //     setWishListedBooks={setWishListedBooks}
+    //   />
+    // </div>
   );
 }
 
