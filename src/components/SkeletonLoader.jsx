@@ -9,11 +9,16 @@ const SkeletonLoader = () => {
         <div className="flex-1 space-y-6 py-3">
           <div className="h-8 bg-slate-400 rounded"></div>
           <div className="space-y-3">
-            <div className="grid grid-cols-3 gap-4">
-              <div className="h-2 bg-slate-400 rounded col-span-2"></div>
-              <div className="h-2 bg-slate-400 rounded col-span-1"></div>
+            <div className="space-y-2">
+              <div className="h-6 bg-slate-400 rounded"></div>
+              <div className="h-3 bg-slate-400 rounded"></div>
             </div>
-            <div className="h-2 bg-slate-400 rounded"></div>
+            <div className="flex flex-wrap gap-2 mt-2">
+              <div className="h-4 bg-slate-400 rounded-full w-16"></div>
+              <div className="h-4 bg-slate-400 rounded-full w-16"></div>
+              <div className="h-4 bg-slate-400 rounded-full w-16"></div>
+              <div className="h-4 bg-slate-400 rounded-full w-16"></div>
+            </div>
           </div>
         </div>
       </div>
