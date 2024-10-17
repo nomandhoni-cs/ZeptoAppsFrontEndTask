@@ -13,6 +13,7 @@ function App() {
   const [isUsingSearch, setIsUsingSearch] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [wishListedBooks, setWishListedBooks] = useState([]);
 
   console.log(isUsingSearch);
 
@@ -34,10 +35,6 @@ function App() {
   useEffect(() => {
     fetchBooks();
   }, []);
-  const onWishlistChange = () => {
-    // Force a re-render by updating the state
-    setBooks([...books]);
-  };
 
   // Filter books based on search query
   const filteredBooks = books.filter(
@@ -58,7 +55,7 @@ function App() {
 
   return (
     <div className="App bg-primary md:px-10 xl:px-30 space-y-7">
-      <Navbar onWishlistChange={onWishlistChange} />
+      <Navbar wishListedBooks={wishListedBooks} />
       <Search
         isUsingSearch={isUsingSearch}
         setIsUsingSearch={setIsUsingSearch}
@@ -72,7 +69,7 @@ function App() {
         loading={loading}
         nextPage={nextPage}
         prevPage={prevPage}
-        onWishlistChange={onWishlistChange}
+        setWishListedBooks={setWishListedBooks}
       />
     </div>
   );

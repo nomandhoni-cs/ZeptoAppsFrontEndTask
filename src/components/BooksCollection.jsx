@@ -7,7 +7,7 @@ const BooksCollection = ({
   fetchBooks,
   prevPage,
   nextPage,
-  onWishlistChange,
+  setWishListedBooks,
 }) => {
   return (
     <div className="w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
@@ -24,7 +24,7 @@ const BooksCollection = ({
             <Book
               key={book.id}
               book={book}
-              onWishlistChange={onWishlistChange}
+              setWishListedBooks={setWishListedBooks}
             />
           ))}
         </div>

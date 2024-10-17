@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const Book = ({ book, onWishlistChange }) => {
+const Book = ({ book, setWishListedBooks }) => {
   const [isFavorited, setIsFavorited] = useState(false);
 
   // Check if the book is already in the favorites list when the component mounts
@@ -9,6 +9,8 @@ const Book = ({ book, onWishlistChange }) => {
     const isAlreadyFavorited = favorites.some(
       (favBook) => favBook.id === book.id
     );
+
+    setWishListedBooks(favorites);
     setIsFavorited(isAlreadyFavorited);
   }, [book.id]);
 
@@ -22,13 +24,14 @@ const Book = ({ book, onWishlistChange }) => {
         (favBook) => favBook.id !== book.id
       );
       localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      setWishListedBooks(updatedFavorites);
     } else {
       // Add the book to favorites
       favorites.push(book);
       localStorage.setItem("favorites", JSON.stringify(favorites));
+      setWishListedBooks(favorites);
     }
 
-    onWishlistChange();
     setIsFavorited(!isFavorited); // Toggle the state
   };
 
