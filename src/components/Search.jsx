@@ -3,8 +3,8 @@ const Search = (props) => {
   return (
     <>
       <div className="flex justify-center items-center w-full">
-        <div className="flex-1 p-2 md:p-4 max-w-screen-md">
-          <div className="relative flex items-center divide-x-1 sm:divide-x-2 divide-secondary w-full border border-secondary h-14 sm:h-16 rounded-full focus-within:shadow-lg overflow-hidden">
+        <div className="flex-1 md:p-4 max-w-screen-md">
+          <div className="relative flex items-center divide-x-1 sm:divide-x-2 divide-secondary w-full border border-secondary h-12 sm:h-14 rounded-full focus-within:shadow-lg overflow-hidden">
             <input
               className="peer flex-1 h-full w-full outline-primary outline-1 text-sm bg-inherit text-gray-700 pl-5"
               type="text"

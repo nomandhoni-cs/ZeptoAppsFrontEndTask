@@ -96,16 +96,12 @@ const Book = ({ book, setWishListedBooks }) => {
             </svg>
           )}
         </button>
-
-        {/* Book ID */}
         <p className="absolute bottom-2 left-2 text-primary text-sm font-bold mt-2 z-20">
           {book.id}
         </p>
       </div>
-
       <Link to={`/book/${book.id}`}>
         <div className="px-3 py-3">
-          {/* Book title */}
           <div className="text-left font-bold font-poppins text-xl mb-2 text-headingText truncate">
             {book.title}
           </div>
@@ -115,9 +111,7 @@ const Book = ({ book, setWishListedBooks }) => {
             by {book.authors.map((author) => author.name).join(", ")}
           </p>
 
-          {/* Genre display */}
-
-          <div className="flex flex-wrap gap-2 mt-2">
+          <div className="flex flex-wrap gap-2 mt-6">
             <p className="text-left text-gray-700 text-base">Genre:</p>
             {book.subjects.slice(0, 4).map((subject, index) => {
               const truncatedSubject = subject.split(" ").slice(0, 2).join(" ");

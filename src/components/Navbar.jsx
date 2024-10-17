@@ -7,7 +7,7 @@ const Navbar = (props) => {
   const { wishListedBooks } = props;
   return (
     <>
-      <header className="w-full mx-auto">
+      <header className="w-full mx-auto mt-4">
         <nav
           aria-label="Global"
           className="flex items-center justify-between space-x-4 max-w-full"
