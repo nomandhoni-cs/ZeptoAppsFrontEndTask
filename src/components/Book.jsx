@@ -1,8 +1,8 @@
-import heart from "../assets/heart.svg"; // Import the heart icon
+import heart from "../assets/heartNoFill.svg"; // Import the heart icon
 
 const Book = ({ book }) => {
   return (
-    <div className="relative w-full mx-auto bg-white dark:bg-dark-tertiary shadow-md rounded overflow-hidden rounded-t-2xl">
+    <div className="relative h-[500px] bg-slate-50 shadow-sm mx-auto dark:bg-dark-tertiary rounded overflow-hidden rounded-t-2xl">
       <div className="relative">
         {/* Container with a fixed aspect ratio for consistent height */}
         <div className="w-full h-56 bg-gray-200 flex items-center justify-center">
@@ -19,7 +19,7 @@ const Book = ({ book }) => {
 
         {/* Heart button for favorites */}
         <button
-          className="absolute top-2 right-2 bg-white p-2 rounded-full shadow hover:scale-105 transition-transform duration-300"
+          className="absolute top-2 right-2 bg-iconBg p-2 rounded-full shadow hover:scale-105 transition-transform duration-300"
           aria-label="Add to favorites"
         >
           <img src={heart} alt="Add to favorites" className="h-6 w-6" />
@@ -27,7 +27,7 @@ const Book = ({ book }) => {
       </div>
 
       <div className="px-3 py-3">
-        <div className="text-left font-bold font-poppins text-xl mb-2 text-black">
+        <div className="text-left font-bold font-poppins text-xl mb-2 text-[#554333]">
           {book.title}
         </div>
         <p className="text-left text-gray-700 text-base">

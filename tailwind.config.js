@@ -9,7 +9,7 @@ export default {
         success: "#28a745",
         headingText: "#554333",
         warning: "#ffc107",
-        info: "#17a2b8",
+        iconBg: "#FFF4D6",
       },
     },
   },
