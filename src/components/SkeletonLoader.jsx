@@ -2,7 +2,7 @@ const SkeletonLoader = () => {
   return (
     <div className="rounded-md max-w-sm w-full mx-auto">
       <div className="animate-pulse">
-        <div className="h-60 w-full rounded-sm bg-gray-400 p-4"></div>
+        <div className="h-72 rounded-t-2xl w-full rounded-sm bg-gray-400 p-4"></div>
       </div>
       <div className="animate-pulse flex space-x-4">
         {/* Image Div  */}
