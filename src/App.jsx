@@ -50,23 +50,37 @@ function App() {
   }, []);
 
   // Filter books based on search query
-  const filteredBooks = books.filter(
-    (book) =>
-      book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      book.authors.some((author) =>
-        author.name.toLowerCase().includes(searchQuery.toLowerCase())
+  // const filteredBooks = books.filter(
+  //   (book) =>
+  //     book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  //     book.authors.some((author) =>
+  //       author.name.toLowerCase().includes(searchQuery.toLowerCase())
+  //     )
+  // );
+
+  // Apply genre filter if a genre is selected
+  const genreFilteredBooks = currentGenreFilter
+    ? books.filter((book) => book.subjects.includes(currentGenreFilter))
+    : books;
+
+  // Combine search and genre filters
+  const finalFilteredBooks = isUsingSearch
+    ? genreFilteredBooks.filter(
+        (book) =>
+          book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          book.authors.some((author) =>
+            author.name.toLowerCase().includes(searchQuery.toLowerCase())
+          )
       )
-  );
+    : genreFilteredBooks;
 
   useEffect(() => {
-    if (isUsingSearch) {
-      setSearchResults(filteredBooks);
+    if (isUsingSearch || currentGenreFilter) {
+      setSearchResults(finalFilteredBooks);
     } else {
       setSearchResults(books);
     }
-  }, [searchQuery]);
-
-  console.log(currentGenreFilter);
+  }, [searchQuery, currentGenreFilter, isUsingSearch]);
 
   const router = createBrowserRouter([
     {
@@ -81,7 +95,11 @@ function App() {
               setIsUsingSearch={setIsUsingSearch}
               searchQuery={searchQuery}
               setSearchQuery={setSearchQuery}
-              books={searchQuery.length > 0 ? searchResults : books}
+              books={
+                searchQuery.length > 0 || currentGenreFilter
+                  ? searchResults
+                  : books
+              }
               fetchBooks={fetchBooks}
               loading={loading}
               nextPage={nextPage}
