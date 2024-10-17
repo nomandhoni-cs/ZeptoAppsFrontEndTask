@@ -28,11 +28,13 @@ const Navbar = (props) => {
           </div>
           <div className="flex-none relative">
             <div className="bg-transparent border-none p-1.5 flex items-center space-x-2 relative">
-              <span className="text-black hidden sm:block">My Wishlist</span>
+              <span className="text-black text-base font-semibold hidden sm:block">
+                My Wishlist
+              </span>
               <img src={heart} alt="Favorites icon" className="h-8" />
               {/* Circle displaying savedItems count */}
               {wishListedBooks.length > 0 && (
-                <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                <span className="absolute bottom-1 right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                   {wishListedBooks.length}
                 </span>
               )}

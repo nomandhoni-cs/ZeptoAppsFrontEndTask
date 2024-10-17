@@ -32,13 +32,12 @@ const Book = ({ book, setWishListedBooks }) => {
       setWishListedBooks(favorites);
     }
 
-    setIsFavorited(!isFavorited); // Toggle the state
+    setIsFavorited(!isFavorited);
   };
 
   return (
-    <div className="relative w-full h-[500px] bg-slate-50 shadow-sm mx-auto dark:bg-dark-tertiary rounded overflow-hidden rounded-t-2xl">
+    <div className="relative w-full h-[500px] bg-[#FFFCF5] shadow-sm mx-auto dark:bg-dark-tertiary rounded-lg overflow-hidden rounded-t-2xl">
       <div className="relative">
-        {/* Container with a fixed aspect ratio for consistent height */}
         <div className="w-full h-72 bg-gray-200 flex items-center justify-center relative overflow-hidden">
           <img
             className="w-full h-full object-fill"
@@ -51,7 +50,7 @@ const Book = ({ book, setWishListedBooks }) => {
           />
 
           {/* Bottom overlay */}
-          <div className="absolute bottom-0 left-0 w-full h-1/5 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+          <div className="absolute bottom-0 left-0 w-full h-1/4 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
         </div>
 
         {/* Heart button for favorites */}
@@ -115,9 +114,9 @@ const Book = ({ book, setWishListedBooks }) => {
         </p>
 
         {/* Genre display */}
-        <p className="text-left text-gray-700 text-xs pt-2">Genre:</p>
 
         <div className="flex flex-wrap gap-2 mt-2">
+          <p className="text-left text-gray-700 text-base">Genre:</p>
           {book.subjects.slice(0, 4).map((subject, index) => {
             const truncatedSubject = subject.split(" ").slice(0, 2).join(" ");
             const isTruncated = subject.split(" ").length > 2;
