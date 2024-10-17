@@ -1,10 +1,17 @@
 import React from "react";
 
-const FilteringAndPagination = () => {
+const FilteringAndPagination = (props) => {
+  const { fetchBooks, prevPage, nextPage } = props;
   return (
     <>
-      <div className="py-5 flex items-center space-x-1 sm:space-x-4">
-        <div className=" text-headingText flex items-center space-x-2 cursor-pointer">
+      <div className="flex space-x-1 sm:space-x-4">
+        <div
+          onClick={() => prevPage && fetchBooks(prevPage)}
+          disabled={!prevPage}
+          className={` text-headingText flex items-center space-x-2 ${
+            !prevPage ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
+          }`}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -21,7 +28,13 @@ const FilteringAndPagination = () => {
           </svg>
           <span className="button-text hidden sm:block">Previous</span>
         </div>
-        <div className=" text-headingText flex items-center space-x-2  cursor-pointer">
+        <div
+          onClick={() => nextPage && fetchBooks(nextPage)}
+          disabled={!nextPage}
+          className={`text-headingText flex items-center  ${
+            !nextPage ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
+          }`}
+        >
           <span className="button-text hidden sm:block">Next</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"

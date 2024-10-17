@@ -8,7 +8,7 @@ export default {
         secondary: "#DD845A",
         success: "#28a745",
         headingText: "#554333",
-        warning: "#ffc107",
+        card: "#FFFCF5",
         iconBg: "#FFF4D6",
       },
     },

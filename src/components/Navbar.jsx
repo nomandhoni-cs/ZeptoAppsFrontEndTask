@@ -11,7 +11,7 @@ const Navbar = (props) => {
       <header className="w-full mx-auto">
         <nav
           aria-label="Global"
-          className="flex items-center justify-between p-2 lg:px-8 space-x-4 max-w-full"
+          className="flex items-center justify-between space-x-4 max-w-full"
         >
           <div className="flex-none">
             <NavLink to="/" className="-m-1.5 p-1.5 flex items-center">

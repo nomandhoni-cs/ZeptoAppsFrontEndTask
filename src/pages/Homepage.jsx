@@ -24,7 +24,11 @@ const Homepage = (props) => {
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
       />
-      <FilteringAndPagination />
+      <FilteringAndPagination
+        nextPage={nextPage}
+        prevPage={prevPage}
+        fetchBooks={fetchBooks}
+      />
       <BooksCollection
         books={books}
         fetchBooks={fetchBooks ? fetchBooks : null}

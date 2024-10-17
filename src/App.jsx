@@ -1,9 +1,6 @@
 import "./App.css";
-import BooksCollection from "./components/BooksCollection";
-import Navbar from "./components/Navbar";
+
 import { useEffect, useState } from "react";
-import Search from "./components/Search";
-import FilteringAndPagination from "./components/FilteringAndPagination";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LayoutPage from "./pages/LayoutPage";
 import Homepage from "./pages/Homepage";
@@ -96,27 +93,26 @@ function App() {
     },
   ]);
 
-  return (
-    <RouterProvider router={router} />
-    // <div className="App bg-primary md:px-10 xl:px-30 space-y-7">
-    //   <Navbar wishListedBooks={wishListedBooks} />
-    //   <Search
-    //     isUsingSearch={isUsingSearch}
-    //     setIsUsingSearch={setIsUsingSearch}
-    //     searchQuery={searchQuery}
-    //     setSearchQuery={setSearchQuery}
-    //   />
-    //   <FilteringAndPagination />
-    //   <BooksCollection
-    //     books={searchQuery.length > 0 ? searchResults : books}
-    //     fetchBooks={fetchBooks}
-    //     loading={loading}
-    //     nextPage={nextPage}
-    //     prevPage={prevPage}
-    //     setWishListedBooks={setWishListedBooks}
-    //   />
-    // </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
+
+// <div className="App bg-primary md:px-10 xl:px-30 space-y-7">
+//   <Navbar wishListedBooks={wishListedBooks} />
+//   <Search
+//     isUsingSearch={isUsingSearch}
+//     setIsUsingSearch={setIsUsingSearch}
+//     searchQuery={searchQuery}
+//     setSearchQuery={setSearchQuery}
+//   />
+//   <FilteringAndPagination />
+//   <BooksCollection
+//     books={searchQuery.length > 0 ? searchResults : books}
+//     fetchBooks={fetchBooks}
+//     loading={loading}
+//     nextPage={nextPage}
+//     prevPage={prevPage}
+//     setWishListedBooks={setWishListedBooks}
+//   />
+// </div>

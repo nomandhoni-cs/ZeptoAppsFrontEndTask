@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import SinglePageSkeleton from "./SinglePageSkeleton";
 
 const SingleBook = () => {
   const [singleBookData, setSingleBookData] = useState(null);
@@ -13,26 +14,22 @@ const SingleBook = () => {
   }, [id]);
 
   if (!singleBookData) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <p className="text-gray-500">Loading...</p>
-      </div>
-    );
+    return <SinglePageSkeleton />;
   }
 
   const { title, authors, subjects, bookshelves, formats, download_count } =
     singleBookData;
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center py-8 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl w-full bg-white shadow-md rounded-lg overflow-hidden">
+    <div className=" flex flex-col justify-center items-center">
+      <div className="max-w-4xl w-full bg-[#FFFCF5]  shadow-md rounded-lg overflow-hidden">
         {/* Book Cover and Title */}
         <div className="p-6">
           <div className="flex flex-col lg:flex-row items-center lg:items-start space-y-4 lg:space-y-0 lg:space-x-6">
             <img
               src={formats["image/jpeg"]}
               alt={`Cover of ${title}`}
-              className="w-48 h-64 object-cover shadow-lg rounded-md"
+              className="w-96 h-full object-cover shadow-lg rounded-md"
             />
             <div className="flex flex-col space-y-2">
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">

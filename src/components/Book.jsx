@@ -37,7 +37,7 @@ const Book = ({ book, setWishListedBooks }) => {
   };
 
   return (
-    <div className="relative w-full h-[500px] bg-[#FFFCF5] shadow-sm mx-auto dark:bg-dark-tertiary rounded-lg overflow-hidden rounded-t-2xl">
+    <div className="relative w-full h-[500px] bg-card shadow-sm mx-auto dark:bg-dark-tertiary rounded-lg overflow-hidden rounded-t-2xl">
       <div className="relative">
         <div className="w-full h-72 bg-gray-200 flex items-center justify-center relative overflow-hidden">
           <img
