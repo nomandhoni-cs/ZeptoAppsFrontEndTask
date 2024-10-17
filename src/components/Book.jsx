@@ -2,12 +2,12 @@ import heart from "../assets/heartNoFill.svg"; // Import the heart icon
 
 const Book = ({ book }) => {
   return (
-    <div className="relative h-[500px] bg-slate-50 shadow-sm mx-auto dark:bg-dark-tertiary rounded overflow-hidden rounded-t-2xl">
+    <div className="relative w-full h-[500px] bg-slate-50 shadow-sm mx-auto dark:bg-dark-tertiary rounded overflow-hidden rounded-t-2xl">
       <div className="relative">
         {/* Container with a fixed aspect ratio for consistent height */}
-        <div className="w-full h-56 bg-gray-200 flex items-center justify-center">
+        <div className="w-full h-72 bg-gray-200 flex items-center justify-center">
           <img
-            className="w-full h-full object-cover"
+            className="w-full h-full object-fill "
             src={book.formats["image/jpeg"]}
             alt={`Cover of ${book.title}`}
             onError={(e) => {
@@ -24,6 +24,9 @@ const Book = ({ book }) => {
         >
           <img src={heart} alt="Add to favorites" className="h-6 w-6" />
         </button>
+        <p className="absolute bottom-2 left-2 text-primary text-xs mt-2">
+          {book.id}
+        </p>
       </div>
 
       <div className="px-3 py-3">
@@ -36,7 +39,6 @@ const Book = ({ book }) => {
         <p className="text-gray-600 text-sm mt-2">
           Genre: {book.subjects.join(", ")}
         </p>
-        <p className="text-gray-500 text-xs mt-2">ID: {book.id}</p>
       </div>
     </div>
   );

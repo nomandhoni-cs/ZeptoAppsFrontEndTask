@@ -9,7 +9,7 @@ const Navbar = ({ searchQuery, setSearchQuery, setIsUsingSearch }) => {
       <header className="w-full mx-auto">
         <nav
           aria-label="Global"
-          className="flex items-center justify-between p-6 lg:px-8 space-x-4 max-w-full"
+          className="flex items-center justify-between p-2 lg:px-8 space-x-4 max-w-full"
         >
           <div className="flex-none">
             <a href="/" className="-m-1.5 p-1.5 flex items-center">
@@ -32,8 +32,8 @@ const Navbar = ({ searchQuery, setSearchQuery, setIsUsingSearch }) => {
           </div>
         </nav>
       </header>
-      <div className="flex max-w-screen-lg mx-auto justify-between items-center">
-        <div className="flex-1 p-5 md:p-10">
+      <div className="flex justify-center items-center w-full">
+        <div className="flex-1 p-2 md:p-4 max-w-screen-lg">
           <div className="relative flex items-center divide-x-1 sm:divide-x-2 divide-secondary w-full border border-secondary h-14 sm:h-16 rounded-full focus-within:shadow-lg overflow-hidden">
             <input
               className="peer flex-1 h-full w-full outline-primary outline-1 text-sm bg-inherit text-gray-700 pl-5"
@@ -54,8 +54,9 @@ const Navbar = ({ searchQuery, setSearchQuery, setIsUsingSearch }) => {
           </div>
         </div>
       </div>
+
       <div className="py-5 flex items-center space-x-1 sm:space-x-4">
-        <div className=" text-[#554333] flex items-center space-x-3 cursor-pointer">
+        <div className=" text-[#554333] flex items-center space-x-2 cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -72,7 +73,7 @@ const Navbar = ({ searchQuery, setSearchQuery, setIsUsingSearch }) => {
           </svg>
           <span className="button-text hidden sm:block">Previous</span>
         </div>
-        <div className=" text-[#554333] flex items-center space-x-3  cursor-pointer">
+        <div className=" text-[#554333] flex items-center space-x-2  cursor-pointer">
           <span className="button-text hidden sm:block">Next</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"

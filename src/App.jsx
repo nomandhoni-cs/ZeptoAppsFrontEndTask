@@ -51,7 +51,7 @@ function App() {
   }, [searchQuery]);
 
   return (
-    <div className="App bg-primary md:px-10 xl:px-40">
+    <div className="App bg-primary md:px-10 xl:px-30 space-y-7">
       <Navbar
         isUsingSearch={isUsingSearch}
         setIsUsingSearch={setIsUsingSearch}
