@@ -10,7 +10,7 @@ const FilteringAndPagination = (props) => {
     setCurrentGenreFilter,
   } = props;
   return (
-    <div className="filtering-and-pagination flex justify-between items-center">
+    <div className="filtering-and-pagination flex justify-between items-center space-x-5">
       <Filter
         uniqueGenres={uniqueGenres}
         setCurrentGenreFilter={setCurrentGenreFilter}

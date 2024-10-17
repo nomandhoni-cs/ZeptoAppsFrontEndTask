@@ -4,7 +4,7 @@ const Pagination = ({ prevPage, nextPage, fetchBooks }) => {
       <div
         onClick={() => prevPage && fetchBooks(prevPage)}
         disabled={!prevPage}
-        className={` text-headingText flex items-center space-x-2 ${
+        className={` text-headingText flex items-center space-x-1 ${
           !prevPage ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
         }`}
       >
@@ -27,7 +27,7 @@ const Pagination = ({ prevPage, nextPage, fetchBooks }) => {
       <div
         onClick={() => nextPage && fetchBooks(nextPage)}
         disabled={!nextPage}
-        className={`text-headingText flex items-center  ${
+        className={`text-headingText flex items-center space-x-1 ${
           !nextPage ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
         }`}
       >

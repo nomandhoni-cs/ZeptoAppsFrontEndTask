@@ -5,7 +5,7 @@ const Filter = ({ uniqueGenres, setCurrentGenreFilter }) => {
   };
 
   return (
-    <div className="mb-4">
+    <div className=" flex items-center justify-center">
       <select
         id="genre-select"
         name="genres"
