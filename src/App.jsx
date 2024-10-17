@@ -1,5 +1,4 @@
 import "./App.css";
-
 import { useEffect, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LayoutPage from "./pages/LayoutPage";
@@ -16,9 +15,10 @@ function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [wishListedBooks, setWishListedBooks] = useState([]);
+  const [uniqueGenres, setUniqueGenres] = useState([]);
+  const [currentGenreFilter, setCurrentGenreFilter] = useState("");
 
-  console.log(isUsingSearch);
-
+  // Fetch books from API
   const fetchBooks = async (url = "https://gutendex.com/books") => {
     setLoading(true);
     try {
@@ -27,6 +27,17 @@ function App() {
       setBooks(data.results);
       setNextPage(data.next);
       setPrevPage(data.previous);
+
+      // Collect unique genres using a Set
+      const genresSet = new Set();
+      data.results.forEach((book) => {
+        book.subjects.forEach((subject) => {
+          genresSet.add(subject);
+        });
+      });
+
+      // Convert Set to an array and set it to the state
+      setUniqueGenres([...genresSet]);
     } catch (error) {
       console.error("Error fetching books:", error);
     } finally {
@@ -54,6 +65,9 @@ function App() {
       setSearchResults(books);
     }
   }, [searchQuery]);
+
+  console.log(currentGenreFilter);
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -73,6 +87,8 @@ function App() {
               nextPage={nextPage}
               prevPage={prevPage}
               setWishListedBooks={setWishListedBooks}
+              uniqueGenres={uniqueGenres}
+              setCurrentGenreFilter={setCurrentGenreFilter}
             />
           ),
         },
@@ -97,22 +113,3 @@ function App() {
 }
 
 export default App;
-
-// <div className="App bg-primary md:px-10 xl:px-30 space-y-7">
-//   <Navbar wishListedBooks={wishListedBooks} />
-//   <Search
-//     isUsingSearch={isUsingSearch}
-//     setIsUsingSearch={setIsUsingSearch}
-//     searchQuery={searchQuery}
-//     setSearchQuery={setSearchQuery}
-//   />
-//   <FilteringAndPagination />
-//   <BooksCollection
-//     books={searchQuery.length > 0 ? searchResults : books}
-//     fetchBooks={fetchBooks}
-//     loading={loading}
-//     nextPage={nextPage}
-//     prevPage={prevPage}
-//     setWishListedBooks={setWishListedBooks}
-//   />
-// </div>

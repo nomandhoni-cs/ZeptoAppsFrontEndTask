@@ -14,8 +14,10 @@ const Homepage = (props) => {
     nextPage,
     prevPage,
     setWishListedBooks,
+    uniqueGenres,
+    setCurrentGenreFilter,
   } = props;
-  console.log(books);
+
   return (
     <>
       <Search
@@ -28,6 +30,8 @@ const Homepage = (props) => {
         nextPage={nextPage}
         prevPage={prevPage}
         fetchBooks={fetchBooks}
+        uniqueGenres={uniqueGenres}
+        setCurrentGenreFilter={setCurrentGenreFilter}
       />
       <BooksCollection
         books={books}

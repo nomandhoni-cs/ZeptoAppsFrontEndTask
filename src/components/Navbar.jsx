@@ -5,7 +5,6 @@ import heart from "../assets/heart.svg";
 
 const Navbar = (props) => {
   const { wishListedBooks } = props;
-  console.log(wishListedBooks);
   return (
     <>
       <header className="w-full mx-auto">
