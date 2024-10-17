@@ -19,7 +19,7 @@ const SingleBook = () => {
 
   const { title, authors, subjects, bookshelves, formats, download_count } =
     singleBookData;
-
+  document.title = `${title} - NovelFlow`;
   return (
     <div className=" flex flex-col justify-center items-center">
       <div className="max-w-4xl w-full bg-[#FFFCF5]  shadow-md rounded-lg overflow-hidden">

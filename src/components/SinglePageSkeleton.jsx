@@ -6,6 +6,9 @@ const SinglePageSkeleton = () => {
         <div className="p-6">
           <div className="flex flex-col lg:flex-row items-center lg:items-start space-y-4 lg:space-y-0 lg:space-x-6">
             <div className="w-full sm:w-96 h-64 bg-gray-300 rounded-md"></div>
+            <div className="w-full text-left sm:w-96 h-30 bg-gray-300 rounded-md"></div>
+            <div className="w-full sm:w-96 h-10 bg-gray-300 rounded-md"></div>
+            <div className="w-full sm:w-96 h-6 bg-gray-300 rounded-md"></div>
             <div className="flex flex-col space-y-2">
               <div className="h-8 bg-gray-300 rounded w-3/4"></div>
               <div className="h-6 bg-gray-300 rounded w-1/2"></div>
