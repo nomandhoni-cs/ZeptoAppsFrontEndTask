@@ -2,6 +2,8 @@ import "./App.css";
 import BooksCollection from "./components/BooksCollection";
 import Navbar from "./components/Navbar";
 import { useEffect, useState } from "react";
+import Search from "./components/Search";
+import FilteringAndPagination from "./components/FilteringAndPagination";
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -32,6 +34,10 @@ function App() {
   useEffect(() => {
     fetchBooks();
   }, []);
+  const onWishlistChange = () => {
+    // Force a re-render by updating the state
+    setBooks([...books]);
+  };
 
   // Filter books based on search query
   const filteredBooks = books.filter(
@@ -52,18 +58,21 @@ function App() {
 
   return (
     <div className="App bg-primary md:px-10 xl:px-30 space-y-7">
-      <Navbar
+      <Navbar onWishlistChange={onWishlistChange} />
+      <Search
         isUsingSearch={isUsingSearch}
         setIsUsingSearch={setIsUsingSearch}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
       />
+      <FilteringAndPagination />
       <BooksCollection
         books={searchQuery.length > 0 ? searchResults : books}
         fetchBooks={fetchBooks}
         loading={loading}
         nextPage={nextPage}
         prevPage={prevPage}
+        onWishlistChange={onWishlistChange}
       />
     </div>
   );

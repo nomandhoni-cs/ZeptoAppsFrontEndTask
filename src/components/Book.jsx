@@ -1,6 +1,37 @@
-import heart from "../assets/heartNoFill.svg"; // Import the heart icon
+import { useState, useEffect } from "react";
 
-const Book = ({ book }) => {
+const Book = ({ book, onWishlistChange }) => {
+  const [isFavorited, setIsFavorited] = useState(false);
+
+  // Check if the book is already in the favorites list when the component mounts
+  useEffect(() => {
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    const isAlreadyFavorited = favorites.some(
+      (favBook) => favBook.id === book.id
+    );
+    setIsFavorited(isAlreadyFavorited);
+  }, [book.id]);
+
+  // Toggle the favorite status
+  const handleFavorite = () => {
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    if (isFavorited) {
+      // If already favorited, remove the book from favorites
+      const updatedFavorites = favorites.filter(
+        (favBook) => favBook.id !== book.id
+      );
+      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+    } else {
+      // Add the book to favorites
+      favorites.push(book);
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+    }
+
+    onWishlistChange();
+    setIsFavorited(!isFavorited); // Toggle the state
+  };
+
   return (
     <div className="relative w-full h-[500px] bg-slate-50 shadow-sm mx-auto dark:bg-dark-tertiary rounded overflow-hidden rounded-t-2xl">
       <div className="relative">
@@ -16,23 +47,51 @@ const Book = ({ book }) => {
             }}
           />
 
-          {/* Top overlay */}
-          {/* <div className="absolute top-0 left-0 w-full h-1/6 bg-gradient-to-b from-black/60 to-transparent z-10"></div> */}
-
           {/* Bottom overlay */}
           <div className="absolute bottom-0 left-0 w-full h-1/5 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
         </div>
 
         {/* Heart button for favorites */}
         <button
+          onClick={handleFavorite}
           className="absolute bottom-2 right-2 bg-iconBg p-1 rounded-full shadow hover:scale-105 transition-transform duration-300 z-20 flex hover:space-x-1 items-center justify-center hover:px-3 group"
-          aria-label="Add to favorites"
+          aria-label="Add to wishlist"
         >
-          {/* 'Add' text will only appear on hover */}
+          {/* Show "Added" or "Add" based on favorite state */}
           <span className="text-black hidden group-hover:block transition-opacity duration-700">
-            Add
+            {isFavorited ? "Added" : "Add to wishlist"}
           </span>
-          <img src={heart} alt="Add to favorites" className="h-6 w-6" />
+          {isFavorited ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="#DD845A"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+              />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-6 text-headingText"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+              />
+            </svg>
+          )}
         </button>
 
         {/* Book ID */}
@@ -42,8 +101,8 @@ const Book = ({ book }) => {
       </div>
 
       <div className="px-3 py-3">
-        {/* Book title, limited to one line with ellipsis if too long */}
-        <div className="text-left font-bold font-poppins text-xl mb-2 text-[#554333] truncate">
+        {/* Book title */}
+        <div className="text-left font-bold font-poppins text-xl mb-2 text-headingText truncate">
           {book.title}
         </div>
 
@@ -57,10 +116,8 @@ const Book = ({ book }) => {
 
         <div className="flex flex-wrap gap-2 mt-2">
           {book.subjects.slice(0, 4).map((subject, index) => {
-            // Limit genre to 2 words, truncate with '...' if too long
             const truncatedSubject = subject.split(" ").slice(0, 2).join(" ");
             const isTruncated = subject.split(" ").length > 2;
-
             return (
               <span
                 key={index}
@@ -71,7 +128,6 @@ const Book = ({ book }) => {
             );
           })}
 
-          {/* Show remaining genres as a '3+' pill if more than 4 */}
           {book.subjects.length > 4 && (
             <span className="bg-gray-300 text-gray-600 text-xs px-3 py-1 rounded-full">
               {`${book.subjects.length - 4}+`}

@@ -6,11 +6,11 @@ const SkeletonLoader = () => {
       </div>
       <div className="animate-pulse flex space-x-4">
         {/* Image Div  */}
-        <div className="flex-1 space-y-6 py-3">
+        <div className="flex-1 space-y-6 pt-3">
           <div className="h-8 bg-slate-400 rounded"></div>
-          <div className="space-y-3">
+          <div className="space-y-2">
             <div className="space-y-2">
-              <div className="h-6 bg-slate-400 rounded"></div>
+              <div className="h-5 bg-slate-400 rounded"></div>
               <div className="h-3 bg-slate-400 rounded"></div>
             </div>
             <div className="flex flex-wrap gap-2 mt-2">
