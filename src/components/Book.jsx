@@ -42,15 +42,42 @@ const Book = ({ book }) => {
       </div>
 
       <div className="px-3 py-3">
-        <div className="text-left font-bold font-poppins text-xl mb-2 text-[#554333]">
+        {/* Book title, limited to one line with ellipsis if too long */}
+        <div className="text-left font-bold font-poppins text-xl mb-2 text-[#554333] truncate">
           {book.title}
         </div>
+
+        {/* Author information */}
         <p className="text-left text-gray-700 text-base">
           by {book.authors.map((author) => author.name).join(", ")}
         </p>
-        <p className="text-gray-600 text-sm mt-2">
-          Genre: {book.subjects.join(", ")}
-        </p>
+
+        {/* Genre display */}
+        <p className="text-left text-gray-700 text-xs pt-2">Genre:</p>
+
+        <div className="flex flex-wrap gap-2 mt-2">
+          {book.subjects.slice(0, 4).map((subject, index) => {
+            // Limit genre to 2 words, truncate with '...' if too long
+            const truncatedSubject = subject.split(" ").slice(0, 2).join(" ");
+            const isTruncated = subject.split(" ").length > 2;
+
+            return (
+              <span
+                key={index}
+                className="bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded-full"
+              >
+                {isTruncated ? `${truncatedSubject}...` : truncatedSubject}
+              </span>
+            );
+          })}
+
+          {/* Show remaining genres as a '3+' pill if more than 4 */}
+          {book.subjects.length > 4 && (
+            <span className="bg-gray-300 text-gray-600 text-xs px-3 py-1 rounded-full">
+              {`${book.subjects.length - 4}+`}
+            </span>
+          )}
+        </div>
       </div>
     </div>
   );
